@@ -17,6 +17,7 @@ How to use it:
   - 2. Human vs AI
   - 3. AI training (AI vs AI)
 
+
 On the command line the user has different options to play the games:
 TicTacToe:
 -m : mode [1,2,3] 1 = Human vs Human, 2 = Human vs AI, 3 = AI vs AI
