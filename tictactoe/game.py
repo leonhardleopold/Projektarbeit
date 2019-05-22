@@ -48,16 +48,19 @@ class Game:
             self.window.update()
 
         while True:
-            if isinstance(self.nextPlayer, HumanPlayer):
-                ready = Event()
-                self.nextPlayer.ready = ready
-                thread = Thread(target=self.nextPlayer.getGraphicalInput(self.game_field,self.window))
-                thread.start()
-                ready.wait()
-                player_input = self.nextPlayer.getInput(self.game_field)
-                self.buttons[player_input[0]][player_input[1]].configure(text=self.nextPlayer.sign)
-                self.game_field[player_input[0]][player_input[1]] = self.nextPlayer.sign
-                self.window.update()
+            if isinstance(self.nextPlayer, HumanPlayer) and self.create_gui:
+                try:
+                    ready = Event()
+                    self.nextPlayer.ready = ready
+                    thread = Thread(target=self.nextPlayer.getGraphicalInput(self.game_field,self.window))
+                    thread.start()
+                    ready.wait()
+                    player_input = self.nextPlayer.getInput(self.game_field)
+                    self.buttons[player_input[0]][player_input[1]].configure(text=self.nextPlayer.sign)
+                    self.game_field[player_input[0]][player_input[1]] = self.nextPlayer.sign
+                    self.window.update()
+                except gui.TclError:
+                    exit(0)
 
             else:
                 player_input = self.nextPlayer.getInput(self.game_field)
@@ -67,12 +70,14 @@ class Game:
 
             #print(self.game_field[0], "\n", self.game_field[1], "\n", self.game_field[2], "\n")
            # print(self.game_field)
-            if checkforwinner(self.game_field):
+            winner = checkforwinner(self.game_field) 
+            if winner is not False:
                 helptext = "Game Over! " + self.nextPlayer.sign + " has won."
                 if self.create_gui:
                     messagebox.showinfo(helptext, helptext)
                     self.window.destroy()
                 if self.nextPlayer == self.playerOne:
+                #if winner == self.playerOne.sign:
                     self.stats[1] += 1
                 else:
                     self.stats[2] += 1
@@ -89,13 +94,14 @@ class Game:
             self.switchplayer()
 
         self.clearboard()
+        self.nextPlayer = self.playerOne
 
     def switchplayer(self):
         if self.nextPlayer == self.playerOne:
             self.nextPlayer = self.playerTwo
         else:
             self.nextPlayer = self.playerOne
-        if isinstance(self.playerOne, HumanPlayer) and isinstance(self.playerTwo, HumanPlayer):
+        if isinstance(self.playerOne, HumanPlayer) and isinstance(self.playerTwo, HumanPlayer) and self.create_gui:
             self.text.configure(text=self.nextPlayer.sign+"´s Turn!")
 
     def clearboard(self):

@@ -11,18 +11,17 @@ class HumanPlayer:
         user_input = self.graphical_move
         self.graphical_move = None
         return user_input
+        #if you want to use the command line
         #return getUserInput(self, game_state)
-        #print("getuserinput")
+
 
     def setGraphicInput(self, move):
         self.graphical_move = move
 
     def getGraphicalInput(self, game_state, window):
-        print("ggi")
         while True:
             window.update()
             if self.graphical_move is not None:
-                print(self.graphical_move)
                 if validateInput({'x': self.graphical_move[0], 'y': self.graphical_move[1]}, game_state):
                     self.ready.set()
                     break
@@ -31,6 +30,7 @@ class HumanPlayer:
 
 
 def getUserInput(player, game_state):
+    print(game_state[0], "\n", game_state[1], "\n", game_state[2])
     print("It is the turn of player:", player.sign)
     while True:
         try:
@@ -49,7 +49,7 @@ def validateInput(user_input, game_state):
         print("Unexpected input! Please try again!")
         return False
     if game_state[user_input['x']][user_input['y']] is not False:
-        print("There is already a sign set for row", user_input['x']+1, "and column", user_input['y']+1, "!\nPlease try again!")
+        print("There is already a sign set for row", user_input['x']+1, "and column", user_input['y']+1, "\nPlease try again!")
         return False
 
     return True
