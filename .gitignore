@@ -1,12 +1,9 @@
 *.class
 *.log
 # Don't track content of these folders
-tictactoe/saved_training_data/
-connect4/saved_training_data/
+
 .idea/
 __pycache__/
 __init__.py
-connect4.py
-connect4/
 
-*.json
+
