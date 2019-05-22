@@ -7,6 +7,7 @@ Author: Leonhard Leopold, SWD17
 Stauts: Version 2.0 
 The Ai for the TicTacToe works perfectly after only a short time in training. 
 Connect4 is implemented as well. The game and training works, but perfecting the game takes a lot of time.
+
 Possible Future Tasks: Optimizing connect4 to be faster
 
 How to use it:
@@ -29,6 +30,7 @@ TicTacToe:
 -o : type of second player [r,a,h,t] r = Randomized Input, a = AI, h = Human, t = AI without randomizer factor
 
 -t : testing - no argument needed - both players are AI's without randomizer factor
+
 
 
 Connect4:
