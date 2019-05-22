@@ -19,17 +19,30 @@ How to use it:
 
 
 On the command line the user has different options to play the games:
+
 TicTacToe:
+
 -m : mode [1,2,3] 1 = Human vs Human, 2 = Human vs AI, 3 = AI vs AI
+
 -x : type of first player [r,a,h,t] r = Randomized Input, a = AI, h = Human, t = AI without randomizer factor
+
 -o : type of second player [r,a,h,t] r = Randomized Input, a = AI, h = Human, t = AI without randomizer factor
+
 -t : testing - no argument needed - both players are AI's without randomizer factor
 
+
 Connect4:
- -m : mode [1,2,3] 1 = Human vs Human, 2 = Human vs AI, 3 = AI vs AI
+
+-m : mode [1,2,3] 1 = Human vs Human, 2 = Human vs AI, 3 = AI vs AI
+
 -t : multithreading [number of threads used]
+
 -p : multiprocessing [number of processes used]
+
 -d : default - no multithreading or multiprocessing used
+
 -x : type of first player [r,a,h] r = Randomized Input, a = AI, h = Human, t = AI without randomizer factor
+
 -o : type of second player [r,a,h] r = Randomized Input, a = AI, h = Human, t = AI without randomizer factor
+
 --test : testing - no argument needed - both players are AI's without randomizer factor
